@@ -1,5 +1,4 @@
 class Author
-
     attr_reader :name
   
     def initialize(name)
@@ -7,19 +6,21 @@ class Author
     end
   
     def articles
-      Article.all.select { |article| @name == article.author.name}
+      Article.all.select{|article| article.author.name == self.name}
     end
   
     def magazines
-      articles.map{ |article| article.magazine }.uniq
+      all_magazines = articles.map{ |article| article.magazine}
+      all_magazines.uniq
     end
   
     def add_article(magazine, title)
-      Article.new(author: self, magazine: magazine, title: title )
+      Article.new(self, magazine, title)
     end
   
     def topic_areas
-      magazines.map{ |magazine| magazine.category }
+      magazines.collect{|magazine| magazine.category}.uniq
     end
+  
   
   end

@@ -1,21 +1,16 @@
-require_relative "./author"
-require_relative "./magazine"
-
 class Article
-
-    attr_reader :title, :author, :magazine
-  
+    attr_reader :magazine, :title, :author
     @@all = []
   
-    def initialize( author:, magazine:, title:)
-        author.class == Author ? @author = author : @author = "Not an Author Object!"
-        magazine.class == Magazine ? @magazine = magazine : @magazine = "Not a Magazine Object!"       
-        title.class == String ? @title = title : @title = "Not a string!"
-        @@all << self
+    def initialize(author, magazine, title)
+      @author = author
+      @magazine = magazine
+      @title = title
+      @@all << self
     end
   
     def self.all
-        @@all
+      @@all
     end
   
   end

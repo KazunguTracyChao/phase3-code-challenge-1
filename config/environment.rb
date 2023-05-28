@@ -1,5 +1,3 @@
-require 'bundler'
+require 'bundler/setup'
 Bundler.require
-require_relative '../lib/article.rb'
-require_relative '../lib/magazine.rb'
-require_relative '../lib/author.rb'
+require_all 'app'
